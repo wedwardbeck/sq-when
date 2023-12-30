@@ -24,29 +24,61 @@ type Event = {
     subTitle: string
     imageURL: string
     locationName: string
-    address1: string
-    address2: string
-    city: string
-    region: string
-    postcode: string
-    country: string
-    phone: string
-    email: string
     eventStartDate: string
-    eventEndDate: string
-    earlyRegistrationStartDate: string
-    registrationStartDate: string
-    registrationEndDate: string
-    status: string
-    position: string
-    distSort: number
 }
 
 const queryClient = new QueryClient()
 
-const fetchEvents = async () => {
-    const res = await fetch('http://localhost:9000/events')
-    return (await res.json()) as Event[]
+const eventData: Event[] = [
+    {
+        id: 0,
+        title: 'Evolve Lubbock is a Gi & No-Gi Event',
+        subTitle:
+            'Adults Gi & No-Gi, Kids & Teens Gi & No-Gi Tournament April 19th, 2020!',
+        imageURL: 'txbjj.png',
+        locationName: 'Apex Event Center',
+        eventStartDate: '2020-04-19T00:06:48.616146Z',
+    },
+    {
+        id: 1,
+        title: 'Grapplefest Dallas 2020',
+        subTitle:
+            'Adults Gi & No-Gi, Kids & Teens Gi & No-Gi Tournament April 19th, 2020!',
+        imageURL: 'image1.jpg',
+        locationName: 'Bonnie Yard',
+        eventStartDate: '2020-04-29T00:06:48.616146Z',
+    },
+    {
+        id: 2,
+        title: '10PATX WORLD OPEN - JIU JITSU TOURNAMENT',
+        subTitle:
+            '10PATX World Open is held annually at Paleo FX. First 50 Paid Registrants get a FREE rashguard.',
+        imageURL: '10patx.png',
+        locationName: 'Palmer Events Center',
+        eventStartDate: '2020-05-04T00:06:48.616146Z',
+    },
+    {
+        id: 3,
+        title: 'Grapplefest Dallas 2020',
+        subTitle:
+            'Adults Gi & No-Gi, Kids & Teens Gi & No-Gi Tournament April 19th, 2020!',
+        imageURL: 'image1.jpg',
+        locationName: 'Bonnie Yard',
+        eventStartDate: '2020-05-19T00:06:48.616146Z',
+    },
+    {
+        id: 4,
+        title: 'Grapplefest Dallas 2020',
+        subTitle: '',
+        imageURL: 'image1.jpg',
+        locationName: 'Bonnie Yard',
+        eventStartDate: '2020-06-02T00:06:48.616146Z',
+    },
+]
+function fetchEvents(): Promise<Event[]> {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(eventData), 700) // Simulating async operation
+    })
 }
 
 const defaultColumns: ColumnDef<Event>[] = [
